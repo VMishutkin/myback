@@ -20,6 +20,7 @@ public class User {
     private String phone;
     private LocalDate regDate;
     private String city;
+    private String password;
 
 
     @OneToMany(mappedBy = "user")
