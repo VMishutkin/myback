@@ -56,13 +56,14 @@ public class AdsController {
 
     }
 
-    @PatchMapping("/{id}")
-    public CreateAds updateAds(@PathVariable int id, @RequestBody CreateAds createAds){
+    @PatchMapping("/{pk}")
+    public CreateAds updateAds(@PathVariable int pk, @RequestBody CreateAds createAds){
 
-        return null;
+        return adsService.updateAds(pk, createAds);
     }
     @GetMapping("/{ad_pk}/comments/{id}")
     public CommentDto getComments(@PathVariable int ad_pk, @PathVariable int id){
+
         return null;
     }
     @DeleteMapping("/{ad_pk}/comments/{id}")

@@ -1,7 +1,9 @@
 package ru.skypro.homework.service;
 
+import org.springframework.stereotype.Service;
 import ru.skypro.homework.dto.ads.AdsDto;
 import ru.skypro.homework.dto.ads.CommentDto;
+import ru.skypro.homework.dto.ads.CreateAds;
 import ru.skypro.homework.dto.ads.FullAds;
 import ru.skypro.homework.entity.Ad;
 import ru.skypro.homework.entity.Comment;
@@ -10,7 +12,7 @@ import ru.skypro.homework.repository.CommentRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class AdsService {
     private final AdRepository adsRepository;
     private final Mapper mapper;
@@ -53,5 +55,12 @@ public class AdsService {
     public void removeAd(int pk) {
         Ad ad = adsRepository.findById(pk).orElseThrow();
         adsRepository.delete(ad);
+    }
+
+    public CreateAds updateAds(int pk, CreateAds createAds) {
+        Ad ad = adsRepository.findById(pk).orElseThrow();
+        ad.setTitle(createAds.getTitle());
+        ad.setPrice(createAds.getPrice());
+        return createAds;
     }
 }
