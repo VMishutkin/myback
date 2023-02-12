@@ -23,7 +23,7 @@ public class UserService {
     }
 
     public UserDto getUser(String name) {
-        Optional<User> user= userRepository.findByName(name);
+        Optional<User> user= userRepository.findByEmail(name);
         if(user.isPresent())
             return MapStructMapper.INSTANCE.userToDtoUser(user.get());
         else
@@ -32,13 +32,15 @@ public class UserService {
 
     public NewPassword setPassword(Authentication authentication, NewPassword password) {
 
-        Optional<User> user= userRepository.findByName(authentication.getName());
+        Optional<User> user= userRepository.findByEmail(authentication.getName());
         if(user.isPresent()) {
             User foundUser = user.get();
-            if (foundUser.getP)
+            if (foundUser.getPassword().equals(password.getCurrentPassword())){
+                foundUser.setPassword(password.getNewPassword());
+                userRepository.save(foundUser);
+                return password;
+            }
         }
-        else
             return null;
-
     }
 }

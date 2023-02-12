@@ -26,7 +26,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
     @OneToMany//(mappedBy = "author")
-    private List<Ads> ads;
+    private List<Ad> ads;
     @Lob
     private byte[] image;
 

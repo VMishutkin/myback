@@ -1,58 +1,68 @@
 package ru.skypro.homework.controller;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.skypro.homework.dto.ads.AdsDto;
-import ru.skypro.homework.dto.ads.Comment;
+import ru.skypro.homework.dto.ads.CommentDto;
 import ru.skypro.homework.dto.ads.CreateAds;
 import ru.skypro.homework.dto.ads.FullAds;
+import ru.skypro.homework.entity.Ad;
+import ru.skypro.homework.service.AdsService;
 
 import java.util.List;
 
 @Slf4j
 @CrossOrigin(value = "http://localhost:3000")
 @RestController
-@RequiredArgsConstructor
+
 @RequestMapping("/ads")
 public class AdsController {
+    private final AdsService adsService;
+
+    public AdsController(AdsService adsService) {
+        this.adsService = adsService;
+    }
 
 
     @GetMapping
-    public AdsDto getAllAds(@PathVariable int id) {
-        return null;
+    public List<AdsDto> getAllAds() {
+        return adsService.getAllAds();
     }
 
     @PostMapping
-    public AdsDto addAds(@RequestBody AdsDto dto) {
-        return null;
+    public Ad addAds(@RequestBody AdsDto dto) {
+        return adsService.addAds(dto);
     }
 
     @GetMapping("/{ad_pl}/comments")
-    public List<Comment> getComments(@PathVariable int ad_pk) {
-        return null;
+    public List<CommentDto> getComments(@PathVariable int ad_pk) {
+
+        return adsService.getComments(ad_pk);
     }
 
     @PostMapping("/{ad_pk}/comments")
-    public Comment addComment(@PathVariable int ad_pk, @RequestBody Comment comment) {
-        return null;
+    public CommentDto addComment(@PathVariable int ad_pk, @RequestBody CommentDto comment) {
+
+        return adsService.addComment(ad_pk, comment);
     }
 
-    @GetMapping("/{id}")
-    public FullAds getFullAd(@PathVariable int id) {
-        return null;
+    @GetMapping("/{pk}")
+    public FullAds getFullAd(@PathVariable int pk) {
+        return adsService.getFullAd(pk) ;
     }
 
     @DeleteMapping("/{id}")
-    public void removeAds(@PathVariable int id) {
+    public void removeAds(@PathVariable int pk) {
+        adsService.removeAd(pk);
 
     }
 
     @PatchMapping("/{id}")
     public CreateAds updateAds(@PathVariable int id, @RequestBody CreateAds createAds){
+
         return null;
     }
     @GetMapping("/{ad_pk}/comments/{id}")
-    public Comment getComments(@PathVariable int ad_pk, @PathVariable int id){
+    public CommentDto getComments(@PathVariable int ad_pk, @PathVariable int id){
         return null;
     }
     @DeleteMapping("/{ad_pk}/comments/{id}")
@@ -60,7 +70,7 @@ public class AdsController {
 
     }
     @PatchMapping("/{ad_pk}/comments/{id}")
-    public Comment updateComments(@PathVariable int ad_pk, @PathVariable int id){
+    public CommentDto updateComments(@PathVariable int ad_pk, @PathVariable int id){
         return null;
     }
     @GetMapping("/me")

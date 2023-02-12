@@ -17,4 +17,9 @@ public class Comment {
     private Integer pk;
     private String text;
 
+    @ManyToOne
+    @JoinColumn(name = "ad_pk")
+    private Ad ad;
+
+
 }
