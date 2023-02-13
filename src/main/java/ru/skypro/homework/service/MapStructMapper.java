@@ -5,7 +5,7 @@ import org.mapstruct.factory.Mappers;
 import ru.skypro.homework.dto.ads.AdsDto;
 import ru.skypro.homework.dto.ads.CommentDto;
 import ru.skypro.homework.dto.ads.FullAds;
-import ru.skypro.homework.dto.user.UserDto;
+import ru.skypro.homework.dto.ads.user.UserDto;
 import ru.skypro.homework.entity.Ad;
 import ru.skypro.homework.entity.Comment;
 import ru.skypro.homework.entity.User;

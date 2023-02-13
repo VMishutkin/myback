@@ -4,9 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import ru.skypro.homework.dto.user.NewPassword;
-import ru.skypro.homework.dto.user.UserDto;
-import ru.skypro.homework.dto.user.UserImage;
+import ru.skypro.homework.dto.ads.user.NewPassword;
+import ru.skypro.homework.dto.ads.user.UserDto;
+import ru.skypro.homework.dto.ads.user.UserImage;
 import ru.skypro.homework.entity.User;
 import ru.skypro.homework.service.UserService;
 

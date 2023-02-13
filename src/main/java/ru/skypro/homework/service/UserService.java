@@ -2,8 +2,8 @@ package ru.skypro.homework.service;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import ru.skypro.homework.dto.user.NewPassword;
-import ru.skypro.homework.dto.user.UserDto;
+import ru.skypro.homework.dto.ads.user.NewPassword;
+import ru.skypro.homework.dto.ads.user.UserDto;
 import ru.skypro.homework.entity.User;
 import ru.skypro.homework.repository.UserRepository;
 
