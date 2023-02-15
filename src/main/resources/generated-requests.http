@@ -36,21 +36,21 @@ Content-Type: application/json
 Authorization: Basic user password
 
 ###
-GET http://localhost:9000/users/me
+GET http://localhost:8080/users/me
 Content-Type: application/json
-Authorization: Basic user1@mail.com password
+Authorization: Basic admin@mail.ru password1
 
 ###
 PATCH http://localhost:8080/users/me
 Content-Type: application/json
-Authorization: Basic user password
+Authorization: Basic user@mail.ru password
 
 {
   "phone": "33333",
   "lastName": "Ivanov",
   "firstName": "Ivan",
-  "email": "user",
-  "id": 1
+  "email": "user1@mail.ru",
+  "id": 5
 }
 
 ###

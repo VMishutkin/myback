@@ -35,7 +35,7 @@ public class UserController {
 
         return userService.getUser(authentication.getName());
     }
-
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @PatchMapping("/me")
     public User updateUser(@RequestBody UserDto user){
         return userService.updateUser(user);

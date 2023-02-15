@@ -1,6 +1,7 @@
 package ru.skypro.homework.service;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.skypro.homework.model.dto.user.NewPassword;
@@ -15,8 +16,8 @@ public class UserService {
     private final PasswordEncoder encoder;
     private final UserRepository userRepository;
 
-    public UserService(PasswordEncoder encoder, UserRepository userRepository) {
-        this.encoder = encoder;
+    public UserService(UserRepository userRepository) {
+        this.encoder = new BCryptPasswordEncoder();
         this.userRepository = userRepository;
     }
 

@@ -22,23 +22,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import javax.sql.DataSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig   {
-    @Autowired
-    public DataSource dataSource;
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username,password,enabled "
-                        + "from users "
-                        + "where email = ?");
-    }
 
 
     private static final String[] AUTH_WHITELIST = {
@@ -48,8 +36,9 @@ public class WebSecurityConfig   {
             "/webjars/**",
             "/login", "/register"
     };
+
     @Bean
-    public JdbcUserDetailsManager jdbcUserDetailsManager(){
+    public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource){
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
         jdbcUserDetailsManager.setDataSource(dataSource);
         return jdbcUserDetailsManager;
@@ -57,18 +46,9 @@ public class WebSecurityConfig   {
 
 
 
-    @Bean
+/*    @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-    }
-/*    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user@gmail.com")
-                .password("password")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
     }*/
 
 
