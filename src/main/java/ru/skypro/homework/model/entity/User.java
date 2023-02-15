@@ -2,6 +2,7 @@
 package ru.skypro.homework.model.entity;
 
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "USERS")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,15 @@ public class User {
     private String city;
     private String password;
 
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+    @Bean(name = "User")
+    public User getUser(){
+        return this;
+    }
 
     @OneToMany(mappedBy = "author")
     private List<Comment> comments;

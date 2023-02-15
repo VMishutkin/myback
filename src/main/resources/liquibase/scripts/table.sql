@@ -45,3 +45,5 @@ CREATE TABLE authorities
     username     TEXT UNIQUE,
     authority    TEXT
 );
+
+

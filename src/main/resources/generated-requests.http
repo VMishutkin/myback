@@ -2,7 +2,7 @@
 ###
 GET http://localhost:8080/get
 Content-Type: application/json
-Authorization: Basic user1@mail.ru password
+Authorization: Basic user@mail.ru password
 
 ###
 GET http://localhost:8080/ads/asddsfsdf/comment
@@ -26,8 +26,8 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-  "username": "user12",
-  "password": "password1"
+  "username": "user@mail.ru",
+  "password": "password"
 }
 
 ###
@@ -36,14 +36,14 @@ Content-Type: application/json
 Authorization: Basic user password
 
 ###
-GET http://localhost:9000/users/me
+GET http://localhost:8080/users/me
 Content-Type: application/json
-Authorization: Basic user1@mail.com password
+Authorization: Basic user@mail.ru password
 
 ###
 PATCH http://localhost:8080/users/me
 Content-Type: application/json
-Authorization: Basic user password
+Authorization: Basic user@mail.ru password
 
 {
   "phone": "33333",
