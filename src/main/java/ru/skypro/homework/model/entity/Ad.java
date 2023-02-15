@@ -1,4 +1,4 @@
-package ru.skypro.homework.entity;
+package ru.skypro.homework.model.entity;
 
 import lombok.Data;
 
@@ -18,8 +18,7 @@ public class Ad {
     private Integer pk;
     private int price;
     private String title;
-    @Lob
-    private byte[] image;
+    private String image;
     @OneToMany(mappedBy = "ad")
     private List<Comment> comments;
 
@@ -61,11 +60,11 @@ public class Ad {
         this.title = title;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

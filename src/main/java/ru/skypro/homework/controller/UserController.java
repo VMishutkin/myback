@@ -2,12 +2,13 @@ package ru.skypro.homework.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import ru.skypro.homework.dto.ads.user.NewPassword;
-import ru.skypro.homework.dto.ads.user.UserDto;
-import ru.skypro.homework.dto.ads.user.UserImage;
-import ru.skypro.homework.entity.User;
+import ru.skypro.homework.model.dto.user.NewPassword;
+import ru.skypro.homework.model.dto.user.UserDto;
+import ru.skypro.homework.model.dto.user.UserImage;
+import ru.skypro.homework.model.entity.User;
 import ru.skypro.homework.service.UserService;
 
 @Slf4j
@@ -22,13 +23,13 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @PostMapping("set_password")
     public NewPassword setPassword(Authentication authentication, @RequestBody NewPassword password){
         return userService.setPassword(authentication, password);
         //return userService.(password);
     }
-
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping("/me")
     public UserDto getuser(Authentication authentication){
 

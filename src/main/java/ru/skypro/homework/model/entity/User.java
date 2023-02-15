@@ -1,15 +1,14 @@
 
-package ru.skypro.homework.entity;
+package ru.skypro.homework.model.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
-@Table(name = "users")
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,18 +17,17 @@ public class User {
     private String firstName;
     private String lastName;
     private String phone;
-    private LocalDate regDate;
+    private String regDate;
     private String city;
     private String password;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "author")
     private List<Comment> comments;
-    @OneToMany//(mappedBy = "author")
+    @OneToMany(mappedBy = "author")
     private List<Ad> ads;
-    @Lob
-    private byte[] image;
 
+    private String image;
 
     public Integer getId() {
         return id;
@@ -71,11 +69,11 @@ public class User {
         this.phone = phone;
     }
 
-    public LocalDate getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(LocalDate regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 
@@ -111,11 +109,11 @@ public class User {
         this.ads = ads;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

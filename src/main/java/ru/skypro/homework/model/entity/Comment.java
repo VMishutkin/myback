@@ -1,4 +1,4 @@
-package ru.skypro.homework.entity;
+package ru.skypro.homework.model.entity;
 
 import lombok.Data;
 
@@ -6,11 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment {
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private User user;
+    private User author;
     private String createdAt;
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

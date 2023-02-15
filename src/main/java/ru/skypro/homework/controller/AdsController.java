@@ -1,11 +1,11 @@
 package ru.skypro.homework.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.skypro.homework.dto.ads.AdsDto;
-import ru.skypro.homework.dto.ads.CommentDto;
-import ru.skypro.homework.dto.ads.CreateAds;
-import ru.skypro.homework.dto.ads.FullAds;
-import ru.skypro.homework.entity.Ad;
+import ru.skypro.homework.model.dto.ads.AdsDto;
+import ru.skypro.homework.model.dto.ads.CommentDto;
+import ru.skypro.homework.model.dto.ads.CreateAds;
+import ru.skypro.homework.model.dto.ads.FullAds;
+import ru.skypro.homework.model.entity.Ad;
 import ru.skypro.homework.service.AdsService;
 
 import java.util.List;

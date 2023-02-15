@@ -1,9 +1,9 @@
 package ru.skypro.homework.service;
 
 import org.springframework.stereotype.Service;
-import ru.skypro.homework.dto.ads.FullAds;
-import ru.skypro.homework.entity.Ad;
-import ru.skypro.homework.entity.User;
+import ru.skypro.homework.model.dto.ads.FullAds;
+import ru.skypro.homework.model.entity.Ad;
+import ru.skypro.homework.model.entity.User;
 import ru.skypro.homework.repository.AdRepository;
 
 @Service

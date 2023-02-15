@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.skypro.homework.dto.LoginReq;
-import ru.skypro.homework.dto.RegisterReq;
-import ru.skypro.homework.dto.ads.user.Role;
+import ru.skypro.homework.model.dto.user.LoginReq;
+import ru.skypro.homework.model.dto.user.RegisterReq;
+import ru.skypro.homework.model.dto.user.Role;
 import ru.skypro.homework.service.AuthService;
 
-import static ru.skypro.homework.dto.ads.user.Role.USER;
+import static ru.skypro.homework.model.dto.user.Role.USER;
 
 @Slf4j
 @CrossOrigin(value = "http://localhost:3000")

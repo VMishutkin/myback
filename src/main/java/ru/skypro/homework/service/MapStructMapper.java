@@ -2,13 +2,13 @@ package ru.skypro.homework.service;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import ru.skypro.homework.dto.ads.AdsDto;
-import ru.skypro.homework.dto.ads.CommentDto;
-import ru.skypro.homework.dto.ads.FullAds;
-import ru.skypro.homework.dto.ads.user.UserDto;
-import ru.skypro.homework.entity.Ad;
-import ru.skypro.homework.entity.Comment;
-import ru.skypro.homework.entity.User;
+import ru.skypro.homework.model.dto.ads.AdsDto;
+import ru.skypro.homework.model.dto.ads.CommentDto;
+import ru.skypro.homework.model.dto.ads.FullAds;
+import ru.skypro.homework.model.dto.user.UserDto;
+import ru.skypro.homework.model.entity.Ad;
+import ru.skypro.homework.model.entity.Comment;
+import ru.skypro.homework.model.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface MapStructMapper {

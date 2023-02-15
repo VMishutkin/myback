@@ -1,7 +1,6 @@
-package ru.skypro.homework.dto;
+package ru.skypro.homework.model.dto.user;
 
 import lombok.Data;
-import ru.skypro.homework.dto.ads.user.Role;
 
 @Data
 public class RegisterReq {

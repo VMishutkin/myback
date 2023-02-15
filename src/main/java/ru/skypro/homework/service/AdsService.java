@@ -1,12 +1,12 @@
 package ru.skypro.homework.service;
 
 import org.springframework.stereotype.Service;
-import ru.skypro.homework.dto.ads.AdsDto;
-import ru.skypro.homework.dto.ads.CommentDto;
-import ru.skypro.homework.dto.ads.CreateAds;
-import ru.skypro.homework.dto.ads.FullAds;
-import ru.skypro.homework.entity.Ad;
-import ru.skypro.homework.entity.Comment;
+import ru.skypro.homework.model.dto.ads.AdsDto;
+import ru.skypro.homework.model.dto.ads.CommentDto;
+import ru.skypro.homework.model.dto.ads.CreateAds;
+import ru.skypro.homework.model.dto.ads.FullAds;
+import ru.skypro.homework.model.entity.Ad;
+import ru.skypro.homework.model.entity.Comment;
 import ru.skypro.homework.repository.AdRepository;
 import ru.skypro.homework.repository.CommentRepository;
 
@@ -34,9 +34,13 @@ public class AdsService {
     }
 
     public List<CommentDto> getComments(int ad_pk) {
+/*
     List<Comment> comments = commentRepository.findAllByPk();
         return comments.stream().map(MapStructMapper.INSTANCE::commentToCommentDto).collect(Collectors.toList());
-  }
+*/
+  return null;
+    }
+
 
 
     public CommentDto addComment(int ad_pk, CommentDto commentDto) {
