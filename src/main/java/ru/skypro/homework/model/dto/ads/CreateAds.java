@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class CreateAds {
-    String description;
-    int price;
-    String title;
+    private String description;
+    private int price;
+    private String title;
 
     public String getDescription() {
         return description;

@@ -16,6 +16,7 @@ public class UserService {
     private final PasswordEncoder encoder;
     private final UserRepository userRepository;
 
+
     public UserService(UserRepository userRepository) {
         this.encoder = new BCryptPasswordEncoder();
         this.userRepository = userRepository;
@@ -34,18 +35,18 @@ public class UserService {
             return null;
     }
 
-    public NewPassword setPassword(Authentication authentication, NewPassword password) {
+    public boolean setPassword(Authentication authentication, NewPassword password) {
 
         Optional<User> user= userRepository.findByUsername(authentication.getName());
         if(user.isPresent()) {
             User foundUser = user.get();
-            if(encoder.matches(password.getCurrentPassword(), foundUser.getPassword())){
+            if(encoder.matches(password.getCurrentPassword(), foundUser.getPassword().substring(8))){
             //if (foundUser.getPassword().equals(password.getCurrentPassword())){
-                foundUser.setPassword(encoder.encode(password.getNewPassword()));
+                foundUser.setPassword("{bcrypt}"+ encoder.encode(password.getNewPassword()));
                 userRepository.save(foundUser);
-                return password;
+                return true;
             }
         }
-            return null;
+            return false;
     }
 }

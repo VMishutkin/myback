@@ -2,6 +2,7 @@ package ru.skypro.homework.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +26,13 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @PostMapping("set_password")
-    public NewPassword setPassword(Authentication authentication, @RequestBody NewPassword password){
-        return userService.setPassword(authentication, password);
+    public ResponseEntity<?> setPassword(Authentication authentication, @RequestBody NewPassword password){
+        if(userService.setPassword(authentication, password)){
+            return ResponseEntity.status(200).build();
+        }else {
+            return ResponseEntity.status(404).build();
+        }
+
         //return userService.(password);
     }
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

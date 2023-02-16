@@ -1,10 +1,12 @@
 package ru.skypro.homework.controller;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import ru.skypro.homework.model.dto.ads.AdsDto;
-import ru.skypro.homework.model.dto.ads.CommentDto;
-import ru.skypro.homework.model.dto.ads.CreateAds;
-import ru.skypro.homework.model.dto.ads.FullAds;
+import org.springframework.web.multipart.MultipartFile;
+import ru.skypro.homework.model.dto.ads.*;
 import ru.skypro.homework.model.entity.Ad;
 import ru.skypro.homework.service.AdsService;
 
@@ -24,16 +26,25 @@ public class AdsController {
 
 
     @GetMapping
-    public List<AdsDto> getAllAds() {
-        return adsService.getAllAds();
+    public ResponseEntity<ResponseWrapperAds> getAllAds() {
+        ResponseWrapperAds adList = adsService.getAllAds();
+
+        if(adList != null) {
+            return ResponseEntity.status(200).body(adList);
+        } else {
+            return ResponseEntity.status(500).build();
+        }
     }
 
-    @PostMapping
-    public Ad addAds(@RequestBody AdsDto dto) {
-        return adsService.addAds(dto);
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Ad addAds(@RequestPart(value = "properties") CreateAds dto,
+                     @RequestPart(value = "image")MultipartFile image,
+                     Authentication authentication) throws Exception {
+        return adsService.addAds(authentication.getName(), dto);
     }
 
-    @GetMapping("/{ad_pl}/comments")
+    @GetMapping("/{ad_pk}/comments")
     public List<CommentDto> getComments(@PathVariable int ad_pk) {
 
         return adsService.getComments(ad_pk);

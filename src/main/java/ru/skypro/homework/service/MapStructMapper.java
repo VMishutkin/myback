@@ -5,6 +5,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import ru.skypro.homework.model.dto.ads.AdsDto;
 import ru.skypro.homework.model.dto.ads.CommentDto;
+import ru.skypro.homework.model.dto.ads.CreateAds;
 import ru.skypro.homework.model.dto.ads.FullAds;
 import ru.skypro.homework.model.dto.user.UserDto;
 import ru.skypro.homework.model.entity.Ad;
@@ -21,6 +22,9 @@ public interface MapStructMapper {
     UserDto userToDtoUser(User user);
 
     AdsDto adsToAdsDto(Ad ads);
+
+
+    Ad createAdsToAd(CreateAds createAds);
 
     Ad adsDtoToAds(AdsDto adsDto);
 

@@ -1,8 +1,8 @@
 
 ###
-GET http://localhost:8080/get
+GET http://localhost:8080/ads
 Content-Type: application/json
-Authorization: Basic user1@mail.ru password
+Authorization: Basic user@mail.ru password
 
 ###
 GET http://localhost:8080/ads/asddsfsdf/comment
@@ -26,8 +26,8 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-  "username": "user12",
-  "password": "password1"
+  "username": "user3@mail.ru",
+  "password": "password"
 }
 
 ###
@@ -67,31 +67,50 @@ Authorization: Basic user password
 ###
 POST http://localhost:8080/users/set_password
 Content-Type: application/json
-Authorization: Basic user password
+Authorization: Basic user3@mail.ru password
 
 {
-  "newPassword": "password",
-  "currentPassword": "password1"
+  "newPassword": "password1",
+  "currentPassword": "password"
 }
 
 ###
 POST http://localhost:8080/ads
 Content-Type: application/json
-Authorization: Basic user password
+Authorization: Basic user@mail.ru password
 
 {
-  "image": "123",
   "price": 123,
   "description": "123",
-  "pk": 1233,
   "title": "123"
 }
+
 
 ###
 GET http://localhost:8080/ads
 Content-Type: application/json
 Authorization: Basic user password
 
+###
+POST http://localhost:8080/ads
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Basic user@mail.ru password
+
+--WebAppBoundary
+Content-Disposition: form-data; name="properties"
+Content-Type: application/json
+
+{
+  "price": 123,
+  "description": "123",
+  "title": "123"
+}
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="me.jpg"
+Content-Type: application/octet-stream
+
+< me.jpg
+--WebAppBoundary--
 
 
 
